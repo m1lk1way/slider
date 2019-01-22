@@ -101,10 +101,12 @@ export default function createSlider(Component) {
 
     onMouseDown = (e) => {
       if (e.button !== 0) { return; }
+      const isEventFromHandle = utils.isEventFromHandle(e, this.handlesRefs);
+      if (this.props.isTrackDisabled && !isEventFromHandle) { return; }
 
       const isVertical = this.props.vertical;
       let position = utils.getMousePosition(isVertical, e);
-      if (!utils.isEventFromHandle(e, this.handlesRefs)) {
+      if (!isEventFromHandle) {
         this.dragOffset = 0;
       } else {
         const handlePosition = utils.getHandleCenterPosition(isVertical, e.target);
