@@ -106,7 +106,30 @@ class PureRenderRange extends React.Component {
       return { ...baseStyles, backgroundColor: item.Color};
     }); 
   }
+  onAdd = (val) => {
+    const items = [...this.state.items];
+    
+    // remove this
+    const Id = items[items.length - 1].Id + 1;
+    
+    const backSortedItems = items.sort((a,b) => {
+      if(a.Value > b.Value) return -1;
+      if(a.Value < b.Value) return 1;
+      return 0;
+    });
 
+    const Color = backSortedItems.find((i) => {
+      return i.Value < val
+    }).Color;
+
+    items.push({Id, Color, Value: val});
+    const sortedItems = items.sort((a,b) => {
+      if(a.Value < b.Value) return -1;
+      if(a.Value > b.Value) return 1;
+      return 0;
+    });
+    this.setState({items: sortedItems})
+  }
   render() {
     return (
       <Range
@@ -122,6 +145,7 @@ class PureRenderRange extends React.Component {
         isTrackDisabled={true}
         //onAfterChange={this.onChange2}
         disabledHandles={[0, 100]}
+        onAdd={this.onAdd}
       />
     );
   }

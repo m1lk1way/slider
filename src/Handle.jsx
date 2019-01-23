@@ -87,7 +87,7 @@ export default class Handle extends React.Component {
         ref={this.setHandleRef}
         tabIndex= {disabled || untabbable ? null : (tabIndex || 0)}
         {...restProps}
-        dragging={dragging.toString()}
+        dragging={dragging}
         className={className}
         style={elStyle}
         onBlur={this.handleBlur}

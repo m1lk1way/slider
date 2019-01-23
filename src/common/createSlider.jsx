@@ -104,8 +104,12 @@ export default function createSlider(Component) {
       if (e.button !== 0) { return; }
       const {isEventFromHandle, isDisabledHandle} = utils.getHandleInfo(e, this.handlesRefs, this.props.disabledHandles)
 
-      if (this.props.isTrackDisabled && !isEventFromHandle || isDisabledHandle) { return; }
+      if (this.props.isTrackDisabled && (!isEventFromHandle && !this.state.addMode) || isDisabledHandle) { return; }
 
+      if (this.state.addMode) {
+        this.props.onAdd(this.state.addBound);
+        return;
+      }
       const isVertical = this.props.vertical;
       let position = utils.getMousePosition(isVertical, e);
       if (!isEventFromHandle) {
@@ -190,20 +194,23 @@ export default function createSlider(Component) {
       }
     }
 
-    onMouseEnter = (e) => {
-      console.log("entered");
-      this.setState({isHovered: true});
-
+    onAddModeMouseMove = (e) => {
       const isVertical = this.props.vertical;
       const position = utils.getMousePosition(isVertical, e);
       const value = this.calcValueByPos(position);
-      //const closestBound = this.getClosestBound(value);
-      this.setState({addBound: value, addMode: this.state.bounds.indexOf(value) === -1});
+      const aboveBound = this.state.bounds.indexOf(value) !== -1;
+
+      this.setState({addBound: value, addMode: !aboveBound});
+    }
+
+    onMouseEnter = (e) => {
+      this.addAddModeDocumentMouseMoveEvents();
+      this.setState({isHovered: true});
     }
 
     onMouseLeave = () => {
-      console.log("left");
       this.setState({isHovered: false});
+      this.removeAddModeDocumentMouseMoveEvents();
     }
 
     onClickMarkLabel = (e, value) => {
@@ -228,6 +235,9 @@ export default function createSlider(Component) {
       const coords = slider.getBoundingClientRect();
       return this.props.vertical ? coords.height : coords.width;
     }
+    addAddModeDocumentMouseMoveEvents() {
+      this.onAddMouseMoveListener = addEventListener(this.document, 'mousemove', this.onAddModeMouseMove);
+    }
 
     addDocumentTouchEvents() {
       // just work for Chrome iOS Safari and Android Browser
@@ -240,6 +250,11 @@ export default function createSlider(Component) {
       this.onMouseUpListener = addEventListener(this.document, 'mouseup', this.onEnd);
     }
 
+    removeAddModeDocumentMouseMoveEvents() {
+      /* eslint-disable no-unused-expressions */
+      this.onAddMouseMoveListener && this.onAddMouseMoveListener.remove();
+      /* eslint-enable no-unused-expressions */
+    }
 
     removeDocumentEvents() {
       /* eslint-disable no-unused-expressions */

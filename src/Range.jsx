@@ -64,6 +64,11 @@ class Range extends React.Component {
 
     const { bounds } = this.state;
     const value = nextProps.value || bounds;
+    if(bounds.length !== value.length) {
+      this.setState({ bounds: value });
+      return;  
+    }
+
     const nextBounds = value.map((v, i) => this.trimAlignValue(v, i, nextProps));
     if (nextBounds.length === bounds.length && nextBounds.every((v, i) => v === bounds[i])) return;
 
@@ -121,7 +126,6 @@ class Range extends React.Component {
   onEnd = () => {
     this.setState({
       handle: null,
-      addMode: true,
     });
     this.removeDocumentEvents();
     this.props.onAfterChange(this.getValue());
