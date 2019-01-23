@@ -14,6 +14,21 @@ export function isEventFromHandle(e, handles) {
   }
 }
 
+export function getHandleInfo(e, handles, disabledHandles) {
+  try {
+    const handle = Object.values(handles).find(h => e.target === findDOMNode(h));
+    
+    return {
+      isEventFromHandle : !!handle ? true: false,
+      isDisabledHandle : !!handle ? disabledHandles.indexOf(handle.props.value) !== -1 : false,
+    };
+  } catch(error) {
+    return {
+      isEventFromHandle: false,
+      isDisabledHandle: false
+    };
+  }
+}
 export function isValueOutOfRange(value, { min, max }) {
   return value < min || value > max;
 }

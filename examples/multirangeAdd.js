@@ -110,19 +110,20 @@ class PureRenderRange extends React.Component {
 
   render() {
     return (
-        <Range
-            allowCross={false}
-            step={5}
-            value={this.processItems()}
-            max={105}
-            trackStyle={this.generateTracks()}
-            handle={CustomHandle}
-            railStyle={{ height: 20, backgroundColor: this.state.items[this.state.items.length -1].Color }}
-            pushable={5}
-            onChange={this.handleChange}
-            isTrackDisabled={true}
-            //onAfterChange={this.onChange2}
-        />
+      <Range
+        allowCross={false}
+        step={5}
+        value={this.processItems()}
+        max={105}
+        trackStyle={this.generateTracks()}
+        handle={CustomHandle}
+        railStyle={{ height: 20, backgroundColor: this.state.items[this.state.items.length -1].Color }}
+        pushable={5}
+        onChange={this.handleChange}
+        isTrackDisabled={true}
+        //onAfterChange={this.onChange2}
+        disabledHandles={[0, 100]}
+      />
     );
   }
 }

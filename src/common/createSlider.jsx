@@ -71,6 +71,7 @@ export default function createSlider(Component) {
       railStyle: {},
       dotStyle: {},
       activeDotStyle: {},
+      disabledHandles: [],
     };
 
     constructor(props) {
@@ -101,8 +102,9 @@ export default function createSlider(Component) {
 
     onMouseDown = (e) => {
       if (e.button !== 0) { return; }
-      const isEventFromHandle = utils.isEventFromHandle(e, this.handlesRefs);
-      if (this.props.isTrackDisabled && !isEventFromHandle) { return; }
+      const {isEventFromHandle, isDisabledHandle} = utils.getHandleInfo(e, this.handlesRefs, this.props.disabledHandles)
+
+      if (this.props.isTrackDisabled && !isEventFromHandle || isDisabledHandle) { return; }
 
       const isVertical = this.props.vertical;
       let position = utils.getMousePosition(isVertical, e);
