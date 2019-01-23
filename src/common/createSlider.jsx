@@ -165,6 +165,7 @@ export default function createSlider(Component) {
     }
 
     onMouseMove = (e) => {
+      console.log("move");
       if (!this.sliderRef) {
         this.onEnd();
         return;
@@ -187,6 +188,22 @@ export default function createSlider(Component) {
       if (this.sliderRef && utils.isEventFromHandle(e, this.handlesRefs)) {
         this.onKeyboard(e);
       }
+    }
+
+    onMouseEnter = (e) => {
+      console.log("entered");
+      this.setState({isHovered: true});
+
+      const isVertical = this.props.vertical;
+      const position = utils.getMousePosition(isVertical, e);
+      const value = this.calcValueByPos(position);
+      //const closestBound = this.getClosestBound(value);
+      this.setState({addBound: value, addMode: this.state.bounds.indexOf(value) === -1});
+    }
+
+    onMouseLeave = () => {
+      console.log("left");
+      this.setState({isHovered: false});
     }
 
     onClickMarkLabel = (e, value) => {
@@ -222,6 +239,7 @@ export default function createSlider(Component) {
       this.onMouseMoveListener = addEventListener(this.document, 'mousemove', this.onMouseMove);
       this.onMouseUpListener = addEventListener(this.document, 'mouseup', this.onEnd);
     }
+
 
     removeDocumentEvents() {
       /* eslint-disable no-unused-expressions */
@@ -295,8 +313,8 @@ export default function createSlider(Component) {
         dotStyle,
         activeDotStyle,
       } = this.props;
-      const { tracks, handles } = super.render();
-
+      const { tracks, handles, addHandle } = super.render();
+      const {isHovered, addMode} = this.state;
       const sliderClassName = classNames(prefixCls, {
         [`${prefixCls}-with-marks`]: Object.keys(marks).length,
         [`${prefixCls}-disabled`]: disabled,
@@ -313,6 +331,8 @@ export default function createSlider(Component) {
           onKeyDown={disabled ? noop : this.onKeyDown}
           onFocus={disabled ? noop : this.onFocus}
           onBlur={disabled ? noop : this.onBlur}
+          onMouseEnter={disabled ? noop : this.onMouseEnter}
+          onMouseLeave={disabled ? noop : this.onMouseLeave}
           style={style}
         >
           <div
@@ -338,6 +358,7 @@ export default function createSlider(Component) {
             activeDotStyle={activeDotStyle}
           />
           {handles}
+          {isHovered && addMode && addHandle}
           <Marks
             className={`${prefixCls}-mark`}
             onClickLabel={disabled ? noop : this.onClickMarkLabel}

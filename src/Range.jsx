@@ -48,6 +48,9 @@ class Range extends React.Component {
       handle: null,
       recent,
       bounds,
+      isHovered: false,
+      addMode: true,
+      addBound: 0,
     };
   }
 
@@ -89,6 +92,7 @@ class Range extends React.Component {
   }
 
   onStart(position) {
+    this.setState({addMode: false});
     const props = this.props;
     const state = this.state;
     const bounds = this.getValue();
@@ -117,6 +121,7 @@ class Range extends React.Component {
   onEnd = () => {
     this.setState({
       handle: null,
+      addMode: true,
     });
     this.removeDocumentEvents();
     this.props.onAfterChange(this.getValue());
@@ -340,6 +345,24 @@ class Range extends React.Component {
     } = this.props;
 
     const offsets = bounds.map(v => this.calcOffset(v));
+    const addHandle = handleGenerator({
+      className: classNames({
+        [handleClassName]: true,
+        [`${handleClassName}-${14 + 1}`]: true,
+      }),
+      prefixCls,
+      vertical,
+      offset: this.calcOffset(this.state.addBound),
+      value: this.state.addBound,
+      dragging: handle === 14,
+      index: 14,
+      tabIndex: tabIndex[14] || 0,
+      min,
+      max,
+      disabled,
+      style: handleStyle[0],
+      ref: h => this.saveHandle(14, 15),
+    });
 
     const handleClassName = `${prefixCls}-handle`;
     const handles = bounds.map((v, i) => handleGenerator({
@@ -380,8 +403,9 @@ class Range extends React.Component {
       );
     });
 
-    return { tracks, handles };
+    return { tracks, handles, addHandle };
   }
 }
 
 export default createSlider(Range);
+

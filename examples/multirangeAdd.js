@@ -68,7 +68,6 @@ export const CustomHandle = ({value, index, ...restProps}) => (
   </Handle>
 )
 
-
 class PureRenderRange extends React.Component {
   constructor(props) {
     super(props);
@@ -131,7 +130,6 @@ class PureRenderRange extends React.Component {
 ReactDOM.render(
   <div>
     <div style={style}>
-      <p>Range as child component</p>
       <PureRenderRange />
     </div>
   </div>
