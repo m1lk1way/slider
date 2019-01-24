@@ -1,21 +1,14 @@
-webpackJsonp([3],{
+webpackJsonp([2],{
 
-/***/ 11:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 189:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(190);
+module.exports = __webpack_require__(192);
 
 
 /***/ }),
 
-/***/ 190:
+/***/ 192:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28,14 +21,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rc_slider_assets_index_less__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rc_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rc_slider_assets_index_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__logicsoftware_slider_assets_index_less__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__logicsoftware_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__logicsoftware_slider_assets_index_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_slider__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rc_slider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider__);
 
 
 
@@ -57,7 +50,7 @@ function percentFormatter(v) {
   return v + ' %';
 }
 
-var SliderWithTooltip = Object(__WEBPACK_IMPORTED_MODULE_7_rc_slider__["createSliderWithTooltip"])(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a);
+var SliderWithTooltip = Object(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider__["createSliderWithTooltip"])(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a);
 
 var NullableSlider = function (_React$Component) {
   __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default()(NullableSlider, _React$Component);
@@ -95,7 +88,7 @@ var NullableSlider = function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         'div',
         null,
-        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, {
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, {
           value: this.state.value,
           onChange: this.onSliderChange,
           onAfterChange: this.onAfterChange
@@ -140,7 +133,7 @@ var CustomizedSlider = function (_React$Component2) {
   __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default()(CustomizedSlider, [{
     key: 'render',
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { value: this.state.value,
+      return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { value: this.state.value,
         onChange: this.onSliderChange, onAfterChange: this.onAfterChange
       });
     }
@@ -201,7 +194,7 @@ var DynamicBounds = function (_React$Component3) {
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('input', { type: 'number', value: this.state.max, onChange: this.onMaxChange }),
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('br', null),
-        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { defaultValue: 50, min: this.state.min, max: this.state.max,
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { defaultValue: 50, min: this.state.min, max: this.state.max,
           onChange: this.onSliderChange
         })
       );
@@ -222,7 +215,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Basic Slider'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { onChange: log })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { onChange: log })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -232,7 +225,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Basic Slider\uFF0C`step=20`'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { step: 20, defaultValue: 50, onBeforeChange: log })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { step: 20, defaultValue: 50, onBeforeChange: log })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -242,7 +235,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Basic Slider\uFF0C`step=20, dots`'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { dots: true, step: 20, defaultValue: 100, onAfterChange: log })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { dots: true, step: 20, defaultValue: 100, onAfterChange: log })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -256,7 +249,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       "{borderColor: 'yellow'}",
       '`'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { dots: true, step: 20, defaultValue: 100, onAfterChange: log, dotStyle: { borderColor: 'orange' }, activeDotStyle: { borderColor: 'yellow' } })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { dots: true, step: 20, defaultValue: 100, onAfterChange: log, dotStyle: { borderColor: 'orange' }, activeDotStyle: { borderColor: 'yellow' } })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -285,7 +278,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
         '(old api, will be deprecated)'
       )
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, {
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, {
       defaultValue: 30,
       maximumTrackStyle: { backgroundColor: 'red', height: 10 },
       minimumTrackStyle: { backgroundColor: 'blue', height: 10 },
@@ -312,7 +305,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
         '(The recommended new api)'
       )
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, {
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, {
       defaultValue: 30,
       trackStyle: { backgroundColor: 'blue', height: 10 },
       handleStyle: {
@@ -334,7 +327,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Basic Slider, disabled'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { onChange: log, disabled: true })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { onChange: log, disabled: true })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -344,7 +337,7 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Controlled Slider'
     ),
-    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { value: 50 })
+    __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { value: 50 })
   ),
   __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
     'div',
@@ -380,5 +373,5 @@ __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ })
 
-},[189]);
+},[191]);
 //# sourceMappingURL=slider.js.map

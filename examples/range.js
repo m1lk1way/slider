@@ -1,21 +1,14 @@
-webpackJsonp([4],{
+webpackJsonp([3],{
 
-/***/ 11:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 187:
+/***/ 189:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(188);
+module.exports = __webpack_require__(190);
 
 
 /***/ }),
 
-/***/ 188:
+/***/ 190:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30,14 +23,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rc_slider_assets_index_less__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rc_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rc_slider_assets_index_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__logicsoftware_slider_assets_index_less__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__logicsoftware_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__logicsoftware_slider_assets_index_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_dom__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rc_slider__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rc_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rc_slider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__logicsoftware_slider__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__logicsoftware_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__logicsoftware_slider__);
 
 
 
@@ -50,7 +43,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var Range = __WEBPACK_IMPORTED_MODULE_8_rc_slider___default.a.Range;
+var Range = __WEBPACK_IMPORTED_MODULE_8__logicsoftware_slider___default.a.Range;
 
 var style = { width: 400, margin: 50 };
 
@@ -423,5 +416,5 @@ __WEBPACK_IMPORTED_MODULE_7_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ })
 
-},[187]);
+},[189]);
 //# sourceMappingURL=range.js.map

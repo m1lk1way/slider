@@ -1,12 +1,5 @@
 webpackJsonp([0],{
 
-/***/ 11:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22,19 +15,19 @@ module.exports = __webpack_require__(83);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rc_slider_assets_index_less__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rc_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rc_slider_assets_index_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logicsoftware_slider_assets_index_less__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logicsoftware_slider_assets_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__logicsoftware_slider_assets_index_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rc_tooltip_assets_bootstrap_css__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rc_tooltip_assets_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rc_tooltip_assets_bootstrap_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_dom__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rc_tooltip__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_slider__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rc_slider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rc_tooltip__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider__);
 
 
 /* eslint-disable react/prop-types */
@@ -46,9 +39,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var createSliderWithTooltip = __WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a.createSliderWithTooltip;
-var Range = createSliderWithTooltip(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a.Range);
-var Handle = __WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a.Handle;
+var createSliderWithTooltip = __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a.createSliderWithTooltip;
+var Range = createSliderWithTooltip(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a.Range);
+var Handle = __WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a.Handle;
 
 var handle = function handle(props) {
   var value = props.value,
@@ -81,7 +74,7 @@ __WEBPACK_IMPORTED_MODULE_5_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Slider with custom handle'
     ),
-    __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { min: 0, max: 20, defaultValue: 3, handle: handle })
+    __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { min: 0, max: 20, defaultValue: 3, handle: handle })
   ),
   __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
     'div',
@@ -91,7 +84,7 @@ __WEBPACK_IMPORTED_MODULE_5_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
       null,
       'Slider with fixed values'
     ),
-    __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_slider___default.a, { min: 20, defaultValue: 20, marks: { 20: 20, 40: 40, 100: 100 }, step: null })
+    __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__logicsoftware_slider___default.a, { min: 20, defaultValue: 20, marks: { 20: 20, 40: 40, 100: 100 }, step: null })
   ),
   __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
     'div',
