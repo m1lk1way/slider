@@ -57,31 +57,41 @@ export default class Handle extends React.Component {
 
   render() {
     const {
-      prefixCls, vertical, offset, style, disabled, min, max, value, tabIndex, ...restProps
+      prefixCls,
+      vertical,
+      offset,
+      style,
+      disabled,
+      min,
+      max,
+      value,
+      tabIndex,
+      untabbable,
+      disabledKeyboard,
+      dragging,
+      ...restProps
     } = this.props;
 
     const className = classNames(
       this.props.className,
-      {
-        [`${prefixCls}-handle-click-focused`]: this.state.clickFocused,
-      }
     );
 
     const postionStyle = vertical ? { bottom: `${offset}%` } : { left: `${offset}%` };
     const elStyle = {
       ...style,
-      ...postionStyle,
+      ...postionStyle
     };
 
     return (
       <div
         ref={this.setHandleRef}
-        tabIndex= {disabled ? null : (tabIndex || 0)}
+        tabIndex= {disabled || untabbable ? null : (tabIndex || 0)}
         {...restProps}
+        dragging={dragging ? dragging.toString() : ""}
         className={className}
         style={elStyle}
         onBlur={this.handleBlur}
-        onKeyDown={this.handleKeyDown}
+        onKeyDown={disabledKeyboard ? null : this.handleKeyDown}
 
         // aria attribute
         role="slider"
@@ -89,7 +99,9 @@ export default class Handle extends React.Component {
         aria-valuemax={max}
         aria-valuenow={value}
         aria-disabled={!!disabled}
-      />
+      >
+        {this.props.children}
+      </div>
     );
   }
 }

@@ -1,9 +1,9 @@
 /* eslint react/no-multi-comp: 0, no-console: 0 */
-import 'rc-slider/assets/index.less';
+import '@logicsoftware/slider/assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slider from 'rc-slider';
+import Slider from '@logicsoftware/slider';
 
 const Range = Slider.Range;
 

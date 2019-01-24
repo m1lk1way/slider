@@ -48,8 +48,13 @@ class Range extends React.Component {
       handle: null,
       recent,
       bounds,
+      isHovered: false,
+      addMode: true,
+      addBound: 0,
+      currentlyDragging: false,
     };
   }
+  isAddEnabled = () => this.props.addHandle && this.props.onAdd;
 
   componentWillReceiveProps(nextProps) {
     if (!('value' in nextProps || 'min' in nextProps || 'max' in nextProps)) return;
@@ -61,6 +66,11 @@ class Range extends React.Component {
 
     const { bounds } = this.state;
     const value = nextProps.value || bounds;
+    if(bounds.length !== value.length) {
+      this.setState({ bounds: value });
+      return;  
+    }
+
     const nextBounds = value.map((v, i) => this.trimAlignValue(v, i, nextProps));
     if (nextBounds.length === bounds.length && nextBounds.every((v, i) => v === bounds[i])) return;
 
@@ -89,6 +99,7 @@ class Range extends React.Component {
   }
 
   onStart(position) {
+    this.setState({currentlyDragging: true});
     const props = this.props;
     const state = this.state;
     const bounds = this.getValue();
@@ -117,6 +128,7 @@ class Range extends React.Component {
   onEnd = () => {
     this.setState({
       handle: null,
+      currentlyDragging: false,
     });
     this.removeDocumentEvents();
     this.props.onAfterChange(this.getValue());
@@ -334,12 +346,18 @@ class Range extends React.Component {
       min,
       max,
       handle: handleGenerator,
+      addHandle,
       trackStyle,
       handleStyle,
       tabIndex,
+      disabledHandles,
     } = this.props;
 
     const offsets = bounds.map(v => this.calcOffset(v));
+
+    const addHandleComponent = this.isAddEnabled() && addHandle({
+      offset: this.calcOffset(this.state.addBound),
+    });
 
     const handleClassName = `${prefixCls}-handle`;
     const handles = bounds.map((v, i) => handleGenerator({
@@ -357,7 +375,9 @@ class Range extends React.Component {
       min,
       max,
       disabled,
+      disabledHandle: disabledHandles.indexOf(v) !== -1 ? true : false,
       style: handleStyle[i],
+      
       ref: h => this.saveHandle(i, h),
     }));
 
@@ -380,8 +400,9 @@ class Range extends React.Component {
       );
     });
 
-    return { tracks, handles };
+    return { tracks, handles, addHandleComponent };
   }
 }
 
 export default createSlider(Range);
+

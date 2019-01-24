@@ -71,6 +71,7 @@ export default function createSlider(Component) {
       railStyle: {},
       dotStyle: {},
       activeDotStyle: {},
+      disabledHandles: [],
     };
 
     constructor(props) {
@@ -101,10 +102,18 @@ export default function createSlider(Component) {
 
     onMouseDown = (e) => {
       if (e.button !== 0) { return; }
+      const {isEventFromHandle, isDisabledHandle} = utils.getHandleInfo(e, this.handlesRefs, this.props.disabledHandles);
 
+      if (this.props.isTrackDisabled && (!isEventFromHandle && !this.state.addMode) || isDisabledHandle) { return; }
+
+      if (this.isAddEnabled() && this.state.addMode) {
+        this.props.onAdd(this.state.addBound);
+        this.setState({addMode: false});
+        return;
+      }
       const isVertical = this.props.vertical;
       let position = utils.getMousePosition(isVertical, e);
-      if (!utils.isEventFromHandle(e, this.handlesRefs)) {
+      if (!isEventFromHandle) {
         this.dragOffset = 0;
       } else {
         const handlePosition = utils.getHandleCenterPosition(isVertical, e.target);
@@ -185,6 +194,31 @@ export default function createSlider(Component) {
       }
     }
 
+    onAddModeMouseMove = (e) => {
+      const isVertical = this.props.vertical;
+      const position = utils.getMousePosition(isVertical, e);
+      const value = this.calcValueByPos(position);
+      const aboveBound = this.state.bounds.indexOf(value) !== -1;
+      const moreThenMaxAddBound = value > this.props.maxAddBound;
+      this.setState({addBound: value, addMode: !aboveBound && !moreThenMaxAddBound});
+    }
+
+    onMouseEnter = (e) => {
+      if (!this.isAddEnabled()) {
+        return;
+      }
+      this.addAddModeDocumentMouseMoveEvents();
+      this.setState({isHovered: true});
+    }
+
+    onMouseLeave = () => {
+      if (!this.isAddEnabled()) {
+        return;
+      }
+      this.setState({isHovered: false});
+      this.removeAddModeDocumentMouseMoveEvents();
+    }
+
     onClickMarkLabel = (e, value) => {
       e.stopPropagation();
       this.onChange({ value });
@@ -207,6 +241,9 @@ export default function createSlider(Component) {
       const coords = slider.getBoundingClientRect();
       return this.props.vertical ? coords.height : coords.width;
     }
+    addAddModeDocumentMouseMoveEvents() {
+      this.onAddMouseMoveListener = addEventListener(this.document, 'mousemove', this.onAddModeMouseMove);
+    }
 
     addDocumentTouchEvents() {
       // just work for Chrome iOS Safari and Android Browser
@@ -217,6 +254,12 @@ export default function createSlider(Component) {
     addDocumentMouseEvents() {
       this.onMouseMoveListener = addEventListener(this.document, 'mousemove', this.onMouseMove);
       this.onMouseUpListener = addEventListener(this.document, 'mouseup', this.onEnd);
+    }
+
+    removeAddModeDocumentMouseMoveEvents() {
+      /* eslint-disable no-unused-expressions */
+      this.onAddMouseMoveListener && this.onAddMouseMoveListener.remove();
+      /* eslint-enable no-unused-expressions */
     }
 
     removeDocumentEvents() {
@@ -291,8 +334,8 @@ export default function createSlider(Component) {
         dotStyle,
         activeDotStyle,
       } = this.props;
-      const { tracks, handles } = super.render();
-
+      const { tracks, handles, addHandleComponent } = super.render();
+      const { isHovered, addMode, currentlyDragging } = this.state;
       const sliderClassName = classNames(prefixCls, {
         [`${prefixCls}-with-marks`]: Object.keys(marks).length,
         [`${prefixCls}-disabled`]: disabled,
@@ -309,6 +352,8 @@ export default function createSlider(Component) {
           onKeyDown={disabled ? noop : this.onKeyDown}
           onFocus={disabled ? noop : this.onFocus}
           onBlur={disabled ? noop : this.onBlur}
+          onMouseEnter={disabled ? noop : this.onMouseEnter}
+          onMouseLeave={disabled ? noop : this.onMouseLeave}
           style={style}
         >
           <div
@@ -334,6 +379,7 @@ export default function createSlider(Component) {
             activeDotStyle={activeDotStyle}
           />
           {handles}
+          {isHovered && addMode && !currentlyDragging && addHandleComponent}
           <Marks
             className={`${prefixCls}-mark`}
             onClickLabel={disabled ? noop : this.onClickMarkLabel}
