@@ -51,6 +51,7 @@ class Range extends React.Component {
       isHovered: false,
       addMode: true,
       addBound: 0,
+      currentlyDragging: false,
     };
   }
 
@@ -97,7 +98,7 @@ class Range extends React.Component {
   }
 
   onStart(position) {
-    this.setState({addMode: false});
+    this.setState({currentlyDragging: true});
     const props = this.props;
     const state = this.state;
     const bounds = this.getValue();
@@ -126,6 +127,7 @@ class Range extends React.Component {
   onEnd = () => {
     this.setState({
       handle: null,
+      currentlyDragging: false,
     });
     this.removeDocumentEvents();
     this.props.onAfterChange(this.getValue());

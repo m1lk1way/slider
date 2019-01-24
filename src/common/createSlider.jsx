@@ -169,7 +169,6 @@ export default function createSlider(Component) {
     }
 
     onMouseMove = (e) => {
-      console.log("move");
       if (!this.sliderRef) {
         this.onEnd();
         return;
@@ -199,8 +198,8 @@ export default function createSlider(Component) {
       const position = utils.getMousePosition(isVertical, e);
       const value = this.calcValueByPos(position);
       const aboveBound = this.state.bounds.indexOf(value) !== -1;
-
-      this.setState({addBound: value, addMode: !aboveBound});
+      const moreThenMaxAddBound = value > this.props.maxAddBound;
+      this.setState({addBound: value, addMode: !aboveBound && !moreThenMaxAddBound});
     }
 
     onMouseEnter = (e) => {
@@ -329,7 +328,7 @@ export default function createSlider(Component) {
         activeDotStyle,
       } = this.props;
       const { tracks, handles, addHandle } = super.render();
-      const {isHovered, addMode} = this.state;
+      const { isHovered, addMode, currentlyDragging } = this.state;
       const sliderClassName = classNames(prefixCls, {
         [`${prefixCls}-with-marks`]: Object.keys(marks).length,
         [`${prefixCls}-disabled`]: disabled,
@@ -373,7 +372,7 @@ export default function createSlider(Component) {
             activeDotStyle={activeDotStyle}
           />
           {handles}
-          {isHovered && addMode && addHandle}
+          {isHovered && addMode && !currentlyDragging && addHandle}
           <Marks
             className={`${prefixCls}-mark`}
             onClickLabel={disabled ? noop : this.onClickMarkLabel}

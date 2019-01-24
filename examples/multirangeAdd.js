@@ -49,6 +49,7 @@ const handleValueStyle = {
   fontWeight: 600,
   fontSize: 15,
   pointerEvents: "none",
+  marginTop: 3,
 };
 
 export const CustomHandle = ({value, index, ...restProps}) => (
@@ -145,6 +146,7 @@ class PureRenderRange extends React.Component {
         isTrackDisabled={true}
         //onAfterChange={this.onChange2}
         disabledHandles={[0, 100]}
+        maxAddBound={100}
         onAdd={this.onAdd}
       />
     );
