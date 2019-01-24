@@ -12,9 +12,9 @@ const style = { width: 800, margin: "0 auto" };
 
 const handleWrapperStyles = {
   position: "absolute",
-  width: 22,
-  top: 4,
-  marginLeft: -11,
+  width: 24,
+  top: 3,
+  marginLeft: -12,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -30,8 +30,8 @@ const handleWrapperStyles = {
 };
 
 const handleStyles = {
-  height: 22,
-  width: 22,
+  height: 24,
+  width: 24,
   borderRadius: 3,
   boxSizing: "border-box",
   border: "1px solid rgba(17,34,51,.15)",
@@ -52,12 +52,45 @@ const handleValueStyle = {
   marginTop: 3,
 };
 
-export const CustomHandle = ({value, index, ...restProps}) => (
+const addHandleWrapperStyle = {
+  position: "absolute",
+  width: 22,
+  top: 4,
+  marginLeft: -11,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  outline: "none",
+  cursor: "pointer",
+  WebkitTouchCallout: "none",
+  WebkitUserSelect: "none",
+  KhtmlUserSelect: "none",
+  MozUserSelect: "none",
+  msUserSelect: "none",
+  OUserSelect: "none",
+  userSelect: "none",
+}
+const addHandleStyle = {
+  height: 22,
+  width: 22,
+  borderRadius: 3,
+  boxSizing: "border-box",
+  border: "1px solid rgba(17,34,51,.15)",
+  display: "inline-block",
+  cursor: "pointer",
+  boxShadow: "0px 0px 5px 0px rgba(17,34,51,.33)",
+  backgroundColor: "#fff",
+  backgroundClip: "padding-box",
+  pointerEvents: "none",
+};
+
+export const CustomHandle = ({value, index, disabledHandle, ...restProps}) => { 
+  return (
   <Handle
     {...restProps} 
     key={index}
     value={value}
-    style={handleWrapperStyles}
+    style={{...handleWrapperStyles, cursor: disabledHandle ? "default" : "pointer"}}
     className={undefined}
     untabbable={true}
     disabledKeyboard={true}
@@ -67,6 +100,14 @@ export const CustomHandle = ({value, index, ...restProps}) => (
       <div style={handleValueStyle}>{value}%</div>
     </React.Fragment>
   </Handle>
+)};
+
+export const AddHandle = ({offset}) => (
+  <div style={{...addHandleWrapperStyle, left: `${offset}%`}}>
+    <div style={addHandleStyle}>
+      +
+    </div>
+  </div>
 )
 
 class PureRenderRange extends React.Component {
@@ -110,7 +151,6 @@ class PureRenderRange extends React.Component {
   onAdd = (val) => {
     const items = [...this.state.items];
     
-    // remove this
     const Id = items[items.length - 1].Id + 1;
     
     const backSortedItems = items.sort((a,b) => {
@@ -140,11 +180,12 @@ class PureRenderRange extends React.Component {
         max={105}
         trackStyle={this.generateTracks()}
         handle={CustomHandle}
+        addHandle={AddHandle}
         railStyle={{ height: 20, backgroundColor: this.state.items[this.state.items.length -1].Color }}
         pushable={5}
         onChange={this.handleChange}
         isTrackDisabled={true}
-        //onAfterChange={this.onChange2}
+        onAfterChange={this.onChange2}
         disabledHandles={[0, 100]}
         maxAddBound={100}
         onAdd={this.onAdd}

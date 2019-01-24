@@ -54,6 +54,7 @@ class Range extends React.Component {
       currentlyDragging: false,
     };
   }
+  isAddEnabled = () => this.props.addHandle && this.props.onAdd;
 
   componentWillReceiveProps(nextProps) {
     if (!('value' in nextProps || 'min' in nextProps || 'max' in nextProps)) return;
@@ -345,29 +346,17 @@ class Range extends React.Component {
       min,
       max,
       handle: handleGenerator,
+      addHandle,
       trackStyle,
       handleStyle,
       tabIndex,
+      disabledHandles,
     } = this.props;
 
     const offsets = bounds.map(v => this.calcOffset(v));
-    const addHandle = handleGenerator({
-      className: classNames({
-        [handleClassName]: true,
-        [`${handleClassName}-${14 + 1}`]: true,
-      }),
-      prefixCls,
-      vertical,
+
+    const addHandleComponent = this.isAddEnabled() && addHandle({
       offset: this.calcOffset(this.state.addBound),
-      value: this.state.addBound,
-      dragging: handle === 14,
-      index: 14,
-      tabIndex: tabIndex[14] || 0,
-      min,
-      max,
-      disabled,
-      style: handleStyle[0],
-      ref: h => this.saveHandle(14, 15),
     });
 
     const handleClassName = `${prefixCls}-handle`;
@@ -386,7 +375,9 @@ class Range extends React.Component {
       min,
       max,
       disabled,
+      disabledHandle: disabledHandles.indexOf(v) !== -1 ? true : false,
       style: handleStyle[i],
+      
       ref: h => this.saveHandle(i, h),
     }));
 
@@ -409,7 +400,7 @@ class Range extends React.Component {
       );
     });
 
-    return { tracks, handles, addHandle };
+    return { tracks, handles, addHandleComponent };
   }
 }
 

@@ -102,12 +102,13 @@ export default function createSlider(Component) {
 
     onMouseDown = (e) => {
       if (e.button !== 0) { return; }
-      const {isEventFromHandle, isDisabledHandle} = utils.getHandleInfo(e, this.handlesRefs, this.props.disabledHandles)
+      const {isEventFromHandle, isDisabledHandle} = utils.getHandleInfo(e, this.handlesRefs, this.props.disabledHandles);
 
       if (this.props.isTrackDisabled && (!isEventFromHandle && !this.state.addMode) || isDisabledHandle) { return; }
 
-      if (this.state.addMode) {
+      if (this.isAddEnabled() && this.state.addMode) {
         this.props.onAdd(this.state.addBound);
+        this.setState({addMode: false});
         return;
       }
       const isVertical = this.props.vertical;
@@ -203,11 +204,17 @@ export default function createSlider(Component) {
     }
 
     onMouseEnter = (e) => {
+      if (!this.isAddEnabled()) {
+        return;
+      }
       this.addAddModeDocumentMouseMoveEvents();
       this.setState({isHovered: true});
     }
 
     onMouseLeave = () => {
+      if (!this.isAddEnabled()) {
+        return;
+      }
       this.setState({isHovered: false});
       this.removeAddModeDocumentMouseMoveEvents();
     }
@@ -327,7 +334,7 @@ export default function createSlider(Component) {
         dotStyle,
         activeDotStyle,
       } = this.props;
-      const { tracks, handles, addHandle } = super.render();
+      const { tracks, handles, addHandleComponent } = super.render();
       const { isHovered, addMode, currentlyDragging } = this.state;
       const sliderClassName = classNames(prefixCls, {
         [`${prefixCls}-with-marks`]: Object.keys(marks).length,
@@ -372,7 +379,7 @@ export default function createSlider(Component) {
             activeDotStyle={activeDotStyle}
           />
           {handles}
-          {isHovered && addMode && !currentlyDragging && addHandle}
+          {isHovered && addMode && !currentlyDragging && addHandleComponent}
           <Marks
             className={`${prefixCls}-mark`}
             onClickLabel={disabled ? noop : this.onClickMarkLabel}
