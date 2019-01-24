@@ -1,9 +1,9 @@
 /* eslint react/no-multi-comp: 0, no-console: 0 */
-import 'rc-slider/assets/index.less';
+import '@logicsoftware/slider/assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slider from 'rc-slider';
+import Slider from '@logicsoftware/slider';
 
 const Handle = Slider.Handle;
 const Range = Slider.Range;
@@ -84,8 +84,7 @@ const addHandleStyle = {
   pointerEvents: "none",
 };
 
-export const CustomHandle = ({value, index, disabledHandle, ...restProps}) => { 
-  return (
+export const CustomHandle = ({value, index, disabledHandle, ...restProps}) => (
   <Handle
     {...restProps} 
     key={index}
@@ -100,7 +99,7 @@ export const CustomHandle = ({value, index, disabledHandle, ...restProps}) => {
       <div style={handleValueStyle}>{value}%</div>
     </React.Fragment>
   </Handle>
-)};
+)
 
 export const AddHandle = ({offset}) => (
   <div style={{...addHandleWrapperStyle, left: `${offset}%`}}>
