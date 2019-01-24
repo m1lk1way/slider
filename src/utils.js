@@ -16,7 +16,8 @@ export function isEventFromHandle(e, handles) {
 
 export function getHandleInfo(e, handles, disabledHandles) {
   try {
-    const handle = Object.values(handles).find(h => e.target === findDOMNode(h));
+    const handlesFromObj = Object.keys(handles).map(k => handles[k]);
+    const handle = handlesFromObj.find(h => e.target === findDOMNode(h));
     
     return {
       isEventFromHandle : !!handle ? true: false,
