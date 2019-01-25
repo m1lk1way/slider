@@ -357,6 +357,7 @@ class Range extends React.Component {
 
     const addHandleComponent = this.isAddEnabled() && addHandle({
       offset: this.calcOffset(this.state.addBound),
+      value: this.state.addBound,
     });
 
     const handleClassName = `${prefixCls}-handle`;
