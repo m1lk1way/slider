@@ -131,7 +131,7 @@ export interface AddHandleProps {
     offset: number;
     value: number;
 }
-export type AddHandleComponent = React.SFC<AddHandleProps>;
+export type AddHandleComponent = React.FunctionComponent<AddHandleProps>;
 
 export interface RangeProps extends CommonApiProps {
     /**
