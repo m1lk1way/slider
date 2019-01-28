@@ -1,6 +1,6 @@
 {
   "name": "@logicsoftware/slider",
-  "version": "8.6.11",
+  "version": "8.6.17",
   "description": "Slider UI component for React",
   "keywords": [
     "react",
@@ -22,7 +22,8 @@
     "assets/*.css",
     "lib",
     "es",
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "license": "MIT",
   "main": "./lib/index.js",
