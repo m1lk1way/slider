@@ -50,7 +50,7 @@ class Range extends React.Component {
       bounds,
       isHovered: false,
       addMode: true,
-      addBound: 0,
+      addBound: null,
       currentlyDragging: false,
     };
   }
