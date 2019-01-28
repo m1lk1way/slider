@@ -49,7 +49,7 @@ class Range extends React.Component {
       recent,
       bounds,
       isHovered: false,
-      addMode: true,
+      addMode: this.isAddEnabled(),
       addBound: null,
       currentlyDragging: false,
     };
