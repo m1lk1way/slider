@@ -197,7 +197,7 @@ export interface RangeProps extends CommonApiProps {
     /**
      * addMode onAdd handler (will be called when item is added to slider via addMode)
      */
-    onAdd: (value: number) => any;
+    onAdd?: (value: number) => any;
 }
 
 export interface HandleProps extends CommonApiProps {
